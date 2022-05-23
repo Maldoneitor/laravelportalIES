@@ -4,7 +4,7 @@
     enviar correos
 @endsection
 @section('contenido')
-   <h1>enviar correos</h1> 
+   <h1>Enviar correos</h1> 
 {{--    @foreach ($arrayEmails as $correo)
        {{$correo}}
    @endforeach --}}

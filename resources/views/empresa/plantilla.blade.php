@@ -10,7 +10,7 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <link rel="stylesheet" href="{{ asset('css/empresa.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/estilo.css') }}">
 </head>
 
 <body>
@@ -22,14 +22,15 @@
             <ul id="nav-mobile" class="right hide-on-med-and-down">
                 <li><a href="{{route("verEmpresa",$id)}}">Ver datos</a></li>
                 <li><a href="{{route("editarEmpresaEmpresa",$id)}}">Modificar datos</a></li>
-                <li><a href="#">Solicitudes de practicas</a></li>
+                <li><a href="{{Route("cerrar")}}">Cerrar sesión</a></li>
             </ul>
         </div>
     </nav>
 </header>
-
+<div class="col container">
     <a href="{{Route("cerrar")}}">cerrar sesion</a>
     @yield('contenido')
+</div>
     <footer class="page-footer blue-grey">
         <div class="container">
             <div class="row">

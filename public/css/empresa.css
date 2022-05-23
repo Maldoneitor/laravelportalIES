@@ -1,4 +1,0 @@
-$(".select").select({
-    dropdownAutoWidth: true,
-    width: '100%'
-});

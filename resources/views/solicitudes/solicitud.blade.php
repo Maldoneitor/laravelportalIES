@@ -68,12 +68,15 @@ solicitud practicas
                 @if (count($tutores)==0)
                     <h6>Debe añadir un tutor antes de realizar la petición de practicas, vaya a modificar datos de empresa</h6>
                 @else
-                <div class="input-field">
-                    <select placeholder="Tutores registrados" class="select browser-default" name="tutor">
-                        @foreach ($tutores as $tutor)
-                        <option value="{{$tutor->idTutorLaboral}}">{{$tutor->nombre}}</option>
-                        @endforeach
-                    </select>
+                <div class="input-field col s6">
+                    <div class="select browser-default">
+                        <ul id="select-options">
+                            <li class="disabled" id="select-options">Elige un tutor</li>
+                            @foreach ($tutores as $tutor)
+                            <li id="select-options" value="{{$tutor->idTutorLaboral}}">{{$tutor->nombre}}</li>
+                            @endforeach
+                        </ul>
+                    </div>
                   </div>
                 @endif
                 @error('tutor')
@@ -86,6 +89,7 @@ solicitud practicas
                 @if (count($sedes)==0)
                     <h6>Debe añadir una sede antes de realizar la petición de practicas, vaya a modificar datos de empresa</h6>
                 @else
+
                 <select placeholder="Selecciona una sede" class="select browser-default" name="sede">
                     @foreach ($sedes as $sede)
                         <option value="{{$sede->idSede}}">{{$sede->nombreSede}}</option>
