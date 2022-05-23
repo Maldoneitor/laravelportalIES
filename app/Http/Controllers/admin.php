@@ -60,23 +60,35 @@ class admin extends Controller
     // filtro para poder entrar + index
     public function mainAdmin()
     {
-        dump(Auth::id());
-        return "prueba";
-        
-        // if (Auth::id() != 1) {
-        //     return redirect()->route("mainEmpresa");
-        // }
-        // $empresas = DB::table('empresas')->simplePaginate(env("PAGES_PAGINATION"));
+        if (Auth::id() != 1) {
+            return redirect()->route("mainEmpresa");
+        }
+        $empresas = DB::table('empresas')->simplePaginate(env("PAGES_PAGINATION"));
 
-
-        // return view('admin.main', compact('empresas'));
+        return view('admin.main', compact('empresas'));
     }
 
     public function filtrar(Request $request)
     {
-        // filtro para mostrar solo las empresas no autorizadas
-        if ($request->filtro === "filtro1") {
-            $empresas = DB::table('empresas')->where('autorizado', '=', '0')->simplePaginate(env("PAGES_PAGINATION"));
+        // orden
+        ($request->orden == "asc") ? $orden = "asc" : $orden = "desc";
+
+        // autorizado
+        ($request->autorizado == "si") ? $autorizado = 1 : $autorizado = 0;
+
+        //dump($request,$orden, $autorizado);
+        // si el campo nombre contiene algo, lo usamos para filtrar
+        if (!empty($request->nombre)) {
+            $empresas = DB::table('empresas')
+                ->where('nombreComercial', '=', $request->nombre)
+                ->orderBy('idEmpresa', $orden)
+                ->simplePaginate(env("PAGES_PAGINATION"));
+            return view('admin.main', compact('empresas'));
+        } else {
+            $empresas = DB::table('empresas')
+                ->where('autorizado', '=', $autorizado)
+                ->orderBy('idEmpresa', $orden)
+                ->simplePaginate(env("PAGES_PAGINATION"));
             return view('admin.main', compact('empresas'));
         }
     }

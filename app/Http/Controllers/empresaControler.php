@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Requests\dataEmpresaRequest;
 use App\Http\Requests\representateEditarRequest;
 use App\Http\Requests\representateRequest;
+use App\Http\Requests\sedeEditarRequest;
+use App\Http\Requests\sedeRequest;
 use App\Http\Requests\tutorEditarRequest;
 use App\Http\Requests\tutorRequest;
 use App\Http\Requests\updateEmpresaRequest;
@@ -78,9 +80,9 @@ class empresaControler extends Controller
     {
         $id = Auth::id();
         $empresa = DB::table("empresas")->where("idUser", "=", $id)->get();
-        $tutores = DB::table("tutoreslaborales")->get();
-        $representantes = DB::table("representantes")->where("activo","=",1)->get();
-        $sedes = DB::table("sedes")->get();
+        $tutores = DB::table("tutoreslaborales")->where("idEmpresa","=",$empresa[0]->idEmpresa)->get();
+        $representantes = DB::table("representantes")->where([["activo","=",1],["idEmpresa","=",$empresa[0]->idEmpresa]])->get();
+        $sedes = DB::table("sedes")->where("idEmpresa","=",$empresa[0]->idEmpresa)->get();
         // return $user;
         return view("empresa.editarEmpresa", compact("id","empresa","tutores", "representantes","sedes"));
     }
@@ -166,7 +168,7 @@ class empresaControler extends Controller
 
     public function editarRepresentantePost(representateEditarRequest $request, $ids){
         $id = Auth::id();
-        DB::table('representante')->where("idRepresentante","=", $ids)->update([
+        DB::table('representantes')->where("idRepresentante","=", $ids)->update([
             "nombre" => $request->nombre,
             "telefono" => $request->telefono,
             "correo" => $request->correo,

@@ -11,7 +11,7 @@ datos de la empresa
         <div class="col 16 s12 m4">
             <div class="card">
                 <div class="card-image">
-                    <img class="responsive-img" src="imagen2.jpg">
+                    <img class="responsive-img" src="{{ asset('img/imagen2.jpg') }}">
                 </div>
                 <div class="card-content">
                     <span class="card-title">Desarrollo de Aplicaciones Web</span>
@@ -21,14 +21,14 @@ datos de la empresa
                         estándares establecidos.</p>
                 </div>
                 <div class="card-action">
-                    <a href="{{route("peticionPracticas", ["ciclo"=>"2daw", "ids"=>$empresa[0]->idEmpresa])}}">Hacer petición de practicas</a>
+                    <a href="{{route("peticionPracticas", ["ciclo"=>"2DAW", "ids"=>$empresa[0]->idEmpresa])}}">Hacer petición de practicas</a>
                 </div>
             </div>
         </div>
-        <div class="col 16 s12 m4">
+        <div class="col s12 m4">
             <div class="card">
                 <div class="card-image">
-                    <img class="responsive-img" src="imagen1.jpg">
+                    <img class="responsive-img" src="{{ asset('img/imagen1.jpg') }}">
                 </div>
                 <div class="card-content">
                     <span class="card-title">Desarrollo de Aplicaciones Multiplataforma</span>
@@ -38,17 +38,16 @@ datos de la empresa
                         exigidas en los estándares establecidos.</p>
                 </div>
                 <div class="card-action">
-                    <a href="{{route("peticionPracticas", ["ciclo"=>"2dam", "ids"=>$empresa[0]->idEmpresa])}}">Hacer petición de practicas</a>
+                    <a href="{{route("peticionPracticas", ["ciclo"=>"2DAM", "ids"=>$empresa[0]->idEmpresa])}}">Hacer petición de practicas</a>
                 </div>
             </div>
         </div>
-        <br>
         <div class="col m2">
         </div>
-        <div class="col 16 s12 m4">
+        <div class="col s12 m4">
             <div class="card">
                 <div class="card-image">
-                    <img class="responsive-img" src="imagen3.jpg">
+                    <img class="responsive-img" src="{{ asset('img/imagen3.jpg') }}">
                 </div>
                 <div class="card-content">
                     <span class="card-title">Administracion de Sistemas Informáticos en Red</span>
@@ -57,7 +56,7 @@ datos de la empresa
                         la calidad exigida y cumpliendo la reglamentación vigente.</p>
                 </div>
                 <div class="card-action">
-                    <a href="{{route("peticionPracticas", ["ciclo"=>"2asir", "ids"=>$empresa[0]->idEmpresa])}}">Hacer petición de practicas</a>
+                    <a href="{{route("peticionPracticas", ["ciclo"=>"2ASIR", "ids"=>$empresa[0]->idEmpresa])}}">Hacer petición de practicas</a>
                 </div>
             </div>
         </div>

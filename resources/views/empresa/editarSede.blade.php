@@ -3,29 +3,37 @@
 Crear representante
 @endsection
 @section('contenido')
-<form action="{{route("editarRepresentantePost",$representante[0]->idRepresentante)}}" method="post">
+<form action="{{route("editarSedePost",$sede[0]->idSede)}}" method="post">
     @csrf
-    <input placeholder="Nombre de sede" name="nombreSede" value="{{$representante[0]->nombre}}"/>
-    @error('nombre')
+    <input placeholder="Nombre de Sede" name="nombreSede" value="{{$sede[0]->nombreSede}}"/>
+    @error('nombreSede')
     <p>{{$message}}</p>
     @enderror
-    <input name="nif" value="{{$representante[0]->nif}}" readonly/>
-    @error('nif')
+    <input placeholder="Dirección" name="direccion" value="{{$sede[0]->direccion}}"/>
+    @error('direccion')
         <p>{{$message}}</p>
     @enderror
-    <input name="correo" value="{{$representante[0]->correo}}"/>
+    <input placeholder="Código postal" name="codPostal" value="{{$sede[0]->codPostal}}"/>
+    @error('codPostal')
+        <p>{{$message}}</p>
+    @enderror
+    <input placeholder="Localidad" name="localidad" value="{{$sede[0]->localidad}}"/>
+    @error('localidad')
+        <p>{{$message}}</p>
+    @enderror
+    <input placeholder="Provincia" name="provincia" value="{{$sede[0]->provincia}}"/>
+    @error('provincia')
+        <p>{{$message}}</p>
+    @enderror
+    <input placeholder="Email" name="correo" value="{{$sede[0]->correo}}"/>
     @error('correo')
         <p>{{$message}}</p>
     @enderror
-    <input name="telefono" value="{{$representante[0]->telefono}}"/>
+    <input placeholder="Teléfono" name="telefono" value="{{$sede[0]->telefono}}"/>
     @error('telefono')
         <p>{{$message}}</p>
     @enderror
-    <input name="cargo" value="{{$representante[0]->cargo}}"/>
-    @error('cargo')
-        <p>{{$message}}</p>
-    @enderror
-    <button type="submit">Editar representante</button>
+    <button type="submit">Editar sede</button>
 </form>
 
 

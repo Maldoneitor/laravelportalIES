@@ -14,7 +14,7 @@ solicitud practicas
             <div class="divider"></div>
             <div class="input-field">
                 <input name="alumnos" value="{{old("numero")}}" class="validate">
-                <label for="alumnos">Número de alumnos</label>
+                <label for="alumnos"></label>
             </div>
             @error('alumnos')
             <p>{{$message}}</p>
@@ -69,17 +69,16 @@ solicitud practicas
                     <h6>Debe añadir un tutor antes de realizar la petición de practicas, vaya a modificar datos de empresa</h6>
                 @else
                 <div class="input-field">
-                    <select class="tutor" name="tutor">
-                        <option value="" disabled selected>Elige una opción</option>
+                    <select placeholder="Tutores registrados" class="select browser-default" name="tutor">
                         @foreach ($tutores as $tutor)
                         <option value="{{$tutor->idTutorLaboral}}">{{$tutor->nombre}}</option>
                         @endforeach
                     </select>
                   </div>
-                  @error('tutor')
-                  <p>{{$message}}</p>
-                  @enderror
                 @endif
+                @error('tutor')
+                <p>{{$message}}</p>
+                @enderror
             </div>
             <div class="divider"></div>
             <div>
@@ -87,7 +86,7 @@ solicitud practicas
                 @if (count($sedes)==0)
                     <h6>Debe añadir una sede antes de realizar la petición de practicas, vaya a modificar datos de empresa</h6>
                 @else
-                <select placeholder="Selecciona una sede" class="sede" name="sede">
+                <select placeholder="Selecciona una sede" class="select browser-default" name="sede">
                     @foreach ($sedes as $sede)
                         <option value="{{$sede->idSede}}">{{$sede->nombreSede}}</option>
                     @endforeach

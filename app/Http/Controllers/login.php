@@ -80,25 +80,19 @@ class login extends Controller
                 }
 
                 //el valor del passwor debe de ser una variable de entorno  y fuerte
-                if (Auth::attempt(['email' => $user->email, "password" => "yamil"])) {
-
-
-                    //return redirect()->route("mainEmpresa");
-                    echo "empresa";
-                    dump(Auth::id());
+                //attempt modificar para el acceso por password
+                Auth::attempt(['email' => $user->email, "password" => "yamil"]);
+                if (Auth::id() !== 1) {
+                    return redirect()->route("mainEmpresa");
                 } else {
-                    //return redirect()->route("mainAdmin");
-                    echo "admin";
-                    dump(Auth::id());
+                    return redirect()->route("mainAdmin");
                 }
             } catch (Exception  $err) {
                 print($err);
                 return redirect()->route("login")->with("info", "Token invalido, intentalo otra vez");
-                echo "error";
             }
         } else {
             return redirect()->route("login")->with("info", "no existe token");
-            echo "final";
         }
     }
 

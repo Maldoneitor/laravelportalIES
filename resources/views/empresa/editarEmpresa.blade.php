@@ -15,12 +15,12 @@ datos de la empresa
         <p>{{$message}}</p>
         @enderror
         
-        <select name="tipo">
+        <select placeholder="Tipo de empresa" name="tipo">
             <option value="{{$empresa[0]->tipo}}">{{$empresa[0]->tipo}}</option>
             @if($empresa[0]->tipo==="publico")
-            <option value="privado">Privado</option>
+            <option value="privado">Privada</option>
             @else
-            <option value="publico">Publico</option>
+            <option value="publico">Pública</option>
             @endif
         </select>
         @error('tipo')
@@ -58,62 +58,96 @@ datos de la empresa
     <a href="{{route("crearTutor")}}">Añadir tutor</a>
         <br>
         @if(count($tutores)>0)
-        <table>
-            <tbody>
-                <tr>
-                    <td>Nombre</td>
-                    <td>NIF</td>
-                    <td>Telefono</td>
-                    <td>EMail</td>
-                    <td>Cargo</td>
-                </tr>
-
-                {{-- Esto hay que generarlo dinámicamente --}}
-                @foreach ($tutores as $tutor)
+            <table>
+                <tbody>
                     <tr>
-                        <td>{{ $tutor->nombre}}</td>
-                        <td>{{ $tutor->nif }}</td>
-                        <td>{{ $tutor->telefono }}</td>
-                        <td>{{ $tutor->correo }}</td>
-                        <td>{{ $tutor->cargo }}</td>
-                        <td><a href="{{route("eliminarTutor", $tutor->idTutorLaboral)}}">Eliminar</a></td>
-                        <td><a href="{{route("editarTutor", $tutor->idTutorLaboral)}}">Editar</a></td>
-                        <td><input type="checkbox" class="marcado" value="{{ $tutor->idTutorLaboral }}"></td>
-                @endforeach
-                </tr>
-            </tbody>
-        </table>
+                        <td>Nombre</td>
+                        <td>NIF</td>
+                        <td>Telefono</td>
+                        <td>EMail</td>
+                        <td>Cargo</td>
+                    </tr>
+
+                    {{-- Esto hay que generarlo dinámicamente --}}
+                    @foreach ($tutores as $tutor)
+                        <tr>
+                            <td>{{ $tutor->nombre}}</td>
+                            <td>{{ $tutor->nif }}</td>
+                            <td>{{ $tutor->telefono }}</td>
+                            <td>{{ $tutor->correo }}</td>
+                            <td>{{ $tutor->cargo }}</td>
+                            <td><a href="{{route("eliminarTutor", $tutor->idTutorLaboral)}}">Eliminar</a></td>
+                            <td><a href="{{route("editarTutor", $tutor->idTutorLaboral)}}">Editar</a></td>
+                            <td><input type="checkbox" class="marcado" value="{{ $tutor->idTutorLaboral }}"></td>
+                    @endforeach
+                    </tr>
+                </tbody>
+            </table>
         @endif
 
         <a href="{{route("crearRepresentante")}}">Añadir representante</a>
         @if(count($representantes)>0)
-        <table>
-            <tbody>
-                <tr>
-                    <td>Nombre</td>
-                    <td>NIF</td>
-                    <td>Telefono</td>
-                    <td>EMail</td>
-                    <td>Cargo</td>
-                </tr>
-
-                {{-- Esto hay que generarlo dinámicamente --}}
-                @foreach ($representantes as $representante)
+            <table>
+                <tbody>
                     <tr>
-                        <td>{{ $representante->nombre}}</td>
-                        <td>{{ $representante->nif }}</td>
-                        <td>{{ $representante->telefono }}</td>
-                        <td>{{ $representante->correo }}</td>
-                        <td>{{ $representante->cargo }}</td>
-                        <td><a href="{{route("eliminarRepresentante", $representante->idRepresentante)}}">Eliminar</a></td>
-                        <td><a href="{{route("editarRepresentante", $representante->idRepresentante)}}">Editar</a></td>
-                        <td><input type="checkbox" class="marcado" value="{{ $representante->idRepresentante}}"></td>
-                @endforeach
-                </tr>
-            </tbody>
-        </table>
+                        <td>Nombre</td>
+                        <td>NIF</td>
+                        <td>Telefono</td>
+                        <td>EMail</td>
+                        <td>Cargo</td>
+                    </tr>
+
+                    {{-- Esto hay que generarlo dinámicamente --}}
+                    @foreach ($representantes as $representante)
+                        <tr>
+                            <td>{{ $representante->nombre}}</td>
+                            <td>{{ $representante->nif }}</td>
+                            <td>{{ $representante->telefono }}</td>
+                            <td>{{ $representante->correo }}</td>
+                            <td>{{ $representante->cargo }}</td>
+                            <td><a href="{{route("eliminarRepresentante", $representante->idRepresentante)}}">Eliminar</a></td>
+                            <td><a href="{{route("editarRepresentante", $representante->idRepresentante)}}">Editar</a></td>
+                            <td><input type="checkbox" class="marcado" value="{{ $representante->idRepresentante}}"></td>
+                    @endforeach
+                    </tr>
+                </tbody>
+            </table>
         @endif
         
+        <a href="{{route("crearSede")}}">Añadir sede</a>
+        @if(count($sedes)>0)
+            <table>
+                <tbody>
+                    <tr>
+                        <td>Nombre</td>
+                        <td>Dirección</td>
+                        <td>Código postal</td>
+                        <td>Localidad</td>
+                        <td>Provincia</td>
+                        <td>Telefono</td>
+                        <td>EMail</td>
+                        
+                    </tr>
+
+                    {{-- Esto hay que generarlo dinámicamente --}}
+                    @foreach ($sedes as $sede)
+                        <tr>
+                            <td>{{ $sede->nombreSede}}</td>
+                            <td>{{ $sede->direccion }}</td>
+                            <td>{{ $sede->codPostal }}</td>
+                            <td>{{ $sede->localidad }}</td>
+                            <td>{{ $sede->provincia }}</td>
+                            <td>{{ $sede->telefono }}</td>
+                            <td>{{ $sede->correo }}</td>
+                            <td><a href="{{route("eliminarSede", $sede->idSede)}}">Eliminar</a></td>
+                            <td><a href="{{route("editarSede", $sede->idSede)}}">Editar</a></td>
+                            <td><input type="checkbox" class="marcado" value="{{ $sede->idSede}}"></td>
+                    @endforeach
+                    </tr>
+                </tbody>
+            </table>
+        @endif
+
         <script src="{{ asset('js/funcionalidades.js') }}"></script>
 
 

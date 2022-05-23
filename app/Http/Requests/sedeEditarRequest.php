@@ -24,7 +24,7 @@ class sedeEditarRequest extends FormRequest
     public function rules()
     {
         return [
-            "nombreSede" => "required |  max:24 | min:2",
+            "nombreSede" => "required |  max:50 | min:2",
             "direccion" => "required | max:50 | min:5",
             "codPostal" => "required | digits:5| numeric",
             "localidad" => "required |  max:24 | min:2",

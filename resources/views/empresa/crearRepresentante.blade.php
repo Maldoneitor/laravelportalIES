@@ -5,23 +5,23 @@ Crar Tutor
 @section('contenido')
 <form action="{{route("crearRepresentantePost")}}" method="post">
     @csrf
-    <input name="nombre" value="{{old("nombre")}}"/>
+    <input placeholder="name" name="nombre" value="{{old("nombre")}}"/>
     @error('nombre')
     <p>{{$message}}</p>
     @enderror
-    <input name="nif" value="{{old("nif")}}"/>
+    <input placeholder="nif" name="nif" value="{{old("nif")}}"/>
     @error('nif')
         <p>{{$message}}</p>
     @enderror
-    <input name="correo" value="{{old("correo")}}"/>
+    <input placeholder="correo" name="correo" value="{{old("correo")}}"/>
     @error('correo')
         <p>{{$message}}</p>
     @enderror
-    <input name="telefono" value="{{old("telefono")}}"/>
+    <input placeholder="telefono" name="telefono" value="{{old("telefono")}}"/>
     @error('telefono')
         <p>{{$message}}</p>
     @enderror
-    <input name="cargo" value="{{old("cargo")}}"/>
+    <input placeholder="cargo" name="cargo" value="{{old("cargo")}}"/>
     @error('cargo')
         <p>{{$message}}</p>
     @enderror

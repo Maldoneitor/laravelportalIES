@@ -9,19 +9,19 @@ Crar Tutor
     @error('nombre')
     <p>{{$message}}</p>
     @enderror
-    <input name="nif" value="{{old("nif")}}"/>
+    <input placeholder="NIF" name="nif" value="{{old("nif")}}"/>
     @error('nif')
         <p>{{$message}}</p>
     @enderror
-    <input name="correo" value="{{old("correo")}}"/>
+    <input placeholder="Correo" name="correo" value="{{old("correo")}}"/>
     @error('correo')
         <p>{{$message}}</p>
     @enderror
-    <input name="telefono" value="{{old("telefono")}}"/>
+    <input placeholder="Teléfono" name="telefono" value="{{old("telefono")}}"/>
     @error('telefono')
         <p>{{$message}}</p>
     @enderror
-    <input name="cargo" value="{{old("cargo")}}"/>
+    <input placeholder="Cargo" name="cargo" value="{{old("cargo")}}"/>
     @error('cargo')
         <p>{{$message}}</p>
     @enderror

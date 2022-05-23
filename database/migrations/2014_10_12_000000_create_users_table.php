@@ -28,7 +28,7 @@ return new class extends Migration
         // creamos un usuario por defecto, que será el administrador
         $user = new User;
         $user->email = env('CORREO_ADMIN');
-        $user->password = 'adminFCTIESZV';
+        $user->password = 'yamil';
         $user->save();
     }
 

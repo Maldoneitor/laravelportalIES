@@ -24,11 +24,11 @@ class empresa extends Controller
         $empresa = DB::table('empresas')->where('idUser', $id)->get();
         return view('empresa.verEmpresa', compact('empresa'));
     }
-    // public function editarEmpresa($id)
-    // {
-    //     $empresa = DB::table('empresas')->where('idUser', $id)->get();
-    //     return view('empresa.editarEmpresa', compact('empresa'));
-    // }
+    public function editarEmpresa($id)
+    {
+        $empresa = DB::table('empresas')->where('idUser', $id)->get();
+        return view('empresa.editarEmpresa', compact('empresa'));
+    }
     public function editarEmpresaPost(updateEmpresaRequest $request){
         $idUser = Auth::id();
         DB::table("empresas")->where("idUser", "=", $idUser)->update([

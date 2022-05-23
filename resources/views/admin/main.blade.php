@@ -1,9 +1,8 @@
-@extends('admin.plantilla')
+@extends('layouts.plantilla')
 @section('titulo')
     Administración
 @endsection
 @section('contenido')
-
         <h1>Página del Administrador</h1>
         <a href="{{ route('crearEmpresa') }}">Añadir empresa</a>
         <br>
@@ -12,12 +11,18 @@
         <br>
         <form action="{{ route('filtrar') }}" method="POST">
             @csrf
-            <select name="filtro" id="filtro">
-                {{-- Aquí hay que generar options según filtro --}}
-                <option value="filtro1">Empresas no autorizadas</option>
-                <option value="filtro2">Empresas en Granada</option>
-                <option value="filtro3">Ver todo</option>
-            </select>
+            <label for="nombre">Nombre</label>
+            <input type="text" name="nombre"><br>
+            <label for="autorizado">Autorizado</label>
+            <select name="autorizado">
+                <option value="si">Si</option>
+                <option value="no">No</option>
+            </select><br>
+            <select name="orden">
+                <option value="asc">Ascendente</option>
+                <option value="desc">Descendente</option>
+            </select><br>
+            <br>
             <button type="submit">FILTRAR</button>
         </form>
         {{-- Se ponen todos los filtros que el cliente quiera (o pueda) --}}
@@ -66,6 +71,7 @@
         <!--De esta forma conseguimos paginar nuestra web-->
         {{ $empresas->links() }}
         <script src="{{ asset('js/funcionalidades.js') }}"></script>
+
     @if (session('info'))
         <p>{{ session('info') }} </p>
     @endif
